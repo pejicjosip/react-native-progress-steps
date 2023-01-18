@@ -1,8 +1,6 @@
-import Content from '../Content';
 import ProgressSteps from '../';
 import React from 'react';
 import { Text } from 'react-native';
-import Title from '../Title';
 import { render } from '@testing-library/react-native';
 
 const CustomMarker = ({
