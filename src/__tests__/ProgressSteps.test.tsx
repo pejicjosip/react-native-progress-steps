@@ -13,28 +13,16 @@ const CustomMarker = ({
 
 const steps = [
   {
-    title: <Title>Title 1</Title>,
-    content: (
-      <Content>
-        <Text>Content 1</Text>
-      </Content>
-    ),
+    title: 'Title 1',
+    info: ' Content 1',
   },
   {
-    title: <Title>Title 2</Title>,
-    content: (
-      <Content>
-        <Text>Content 2</Text>
-      </Content>
-    ),
+    title: 'Title 2',
+    info: ' Content 2',
   },
   {
-    title: <Title>Title 3</Title>,
-    content: (
-      <Content>
-        <Text>Content 3</Text>
-      </Content>
-    ),
+    title: 'Title 3',
+    info: ' Content 3',
   },
 ];
 
@@ -79,11 +67,11 @@ describe('ProgressSteps', () => {
           currentStep={0}
           steps={[
             {
-              title: <Title>Title 1</Title>,
+              title: 'Title 1',
             },
             {
-              title: <Title>Title 2</Title>,
-              content: <Text>Content 2</Text>,
+              title: 'Title 2',
+              info: 'Content 2',
             },
           ]}
         />
@@ -171,11 +159,11 @@ describe('ProgressSteps', () => {
           currentStep={0}
           steps={[
             {
-              title: <Title>Title 1</Title>,
+              title: 'Title 1',
             },
             {
-              title: <Title>Title 2</Title>,
-              content: <Text>Content 2</Text>,
+              title: 'Title 2',
+              info: 'Content 2',
             },
           ]}
         />
