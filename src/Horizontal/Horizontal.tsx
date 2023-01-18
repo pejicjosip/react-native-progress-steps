@@ -4,8 +4,10 @@ import type { IHorizontal } from './Horizontal.types';
 import type { IstepState } from '../ProgressSteps.types';
 import Marker from '../Marker';
 import { ORIENTATION_HORIZONTAL } from '../constants';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './Horizontal.styles';
+import Title from '../Title/Title';
+import Content from '../Content/Content';
 
 const Horizontal: FC<IHorizontal> = ({
   colors,
@@ -20,7 +22,7 @@ const Horizontal: FC<IHorizontal> = ({
   let contents = [];
 
   while (index--) {
-    const { id, title, content } = steps[index];
+    const { id, title, info } = steps[index];
     const stepState: IstepState = {
       isActive: index === currentStep,
       isCompleted: index < currentStep,
@@ -47,18 +49,23 @@ const Horizontal: FC<IHorizontal> = ({
           />
         )}
         {title &&
-          cloneElement(title, {
+          cloneElement(<Title>{title}</Title>, {
             stepState,
             colors: colors?.title,
             orientation,
-            ...title.props,
           })}
       </View>
     );
 
     contents.unshift(
       <View key={`content-${id ?? index}`}>
-        {content && cloneElement(content, { stepState, orientation })}
+        {info &&
+          cloneElement(
+            <Content>
+              <Text>{info}</Text>
+            </Content>,
+            { stepState, orientation }
+          )}
       </View>
     );
   }

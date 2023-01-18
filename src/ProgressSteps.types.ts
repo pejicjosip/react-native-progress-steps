@@ -8,8 +8,8 @@ export interface IProgressSteps {
   marker?: React.ReactElement;
   steps: {
     id?: string | number;
-    title: React.ReactElement;
-    content?: React.ReactElement;
+    title: string;
+    info?: string;
   }[];
   colors?: {
     title?: ItitleColors;

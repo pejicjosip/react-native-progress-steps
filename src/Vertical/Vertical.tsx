@@ -4,8 +4,10 @@ import type { IVertical } from './Vertical.types';
 import type { IstepState } from '../ProgressSteps.types';
 import Marker from '../Marker';
 import { ORIENTATION_VERTICAL } from '../constants';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './Vertical.styles';
+import Title from '../Title/Title';
+import Content from '../Content/Content';
 
 const Vertical: FC<IVertical> = ({
   colors,
@@ -16,7 +18,7 @@ const Vertical: FC<IVertical> = ({
   steps,
 }) => (
   <View style={styles.container}>
-    {steps.map(({ id, title, content }, index) => {
+    {steps.map(({ id, title, info }, index) => {
       const stepState: IstepState = {
         isActive: index === currentStep,
         isCompleted: index < currentStep,
@@ -46,13 +48,21 @@ const Vertical: FC<IVertical> = ({
           </View>
           <View style={styles.right}>
             {title &&
-              cloneElement(title, {
+              cloneElement(<Title>{title}</Title>, {
                 stepState,
                 colors: colors?.title,
                 orientation,
-                ...title.props,
               })}
-            {content && cloneElement(content, { stepState, orientation })}
+            {info &&
+              cloneElement(
+                <Content>
+                  <Text>{info}</Text>
+                </Content>,
+                {
+                  stepState,
+                  orientation,
+                }
+              )}
           </View>
         </View>
       );
